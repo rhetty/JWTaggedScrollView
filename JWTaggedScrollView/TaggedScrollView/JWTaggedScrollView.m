@@ -226,7 +226,7 @@
     if ([self.dataSource respondsToSelector:@selector(textForTag:)]) {
         return [self.dataSource textForTag:index];
     } else {
-        return [NSString stringWithFormat:@"标签%lu", (unsigned long)index + 1];
+        return [NSString stringWithFormat:@"标签%td", index + 1];
     }
 }
 - (UIView *)viewForTag:(NSUInteger)index
