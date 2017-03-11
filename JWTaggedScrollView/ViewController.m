@@ -23,6 +23,11 @@
     self.taggedScrollView.delegate = self;
 }
 
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//  [self.taggedScrollView reloadData];
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -30,17 +35,17 @@
 
 #pragma mark - JWTaggedScrollViewDataSource
 
-- (NSInteger)numberOfTags
+- (NSInteger)numberOfTags:(JWTaggedScrollView *)taggedScrollView
 {
     return 3;
 }
 
-- (NSString *)textForTag:(NSUInteger)index
+- (NSString *)taggedScrollView:(JWTaggedScrollView *)taggedScrollView textForTag:(NSUInteger)index
 {
     return [NSString stringWithFormat:@"Test%lu", (unsigned long)index + 1];
 }
 
-- (UIView *)viewForTag:(NSUInteger)index
+- (UIView *)taggedScrollView:(JWTaggedScrollView *)taggedScrollView viewForTag:(NSUInteger)index
 {
     UIView *view = [[UIView alloc] init];
     switch (index) {
@@ -60,14 +65,14 @@
     return view;
 }
 
-- (UIColor *)colorForSelectedTag
-{
-    return [UIColor redColor];
-}
+//- (UIColor *)colorForSelectedTag:(JWTaggedScrollView *)taggedScrollView
+//{
+//    return [UIColor redColor];
+//}
 
 #pragma mark - JWTaggedScrollViewDelegate
 
-- (void)didSelectTag:(NSUInteger)index
+- (void)taggedScrollView:(JWTaggedScrollView *)taggedScrollView didSelectTag:(NSUInteger)index
 {
     NSLog(@"SELECT: %lu", (unsigned long)index);
 }
